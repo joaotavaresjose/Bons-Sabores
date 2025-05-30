@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('./img/banner.avif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.burger-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.burger-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #e55a2b, #e8851a);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+.cart-slide {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.cart-slide.open {
+    transform: translateX(0);
+}
+
+.fade-in { animation: fadeIn 0.6s ease-in; }
+.fade-in-up { animation: fadeInUp 0.8s ease-out; }
+.fade-in-left { animation: fadeInLeft 0.8s ease-out; }
+.fade-in-right { animation: fadeInRight 0.8s ease-out; }
+.slide-in-up { animation: slideInUp 0.6s ease-out; }
+.slide-down { animation: slideDown 0.5s ease-out; }
+.scale-in { animation: scaleIn 0.6s ease-out; }
+.bounce-in { animation: bounceIn 0.8s ease-out; }
+.bounce { animation: bounce 2s infinite; }
+.pulse { animation: pulse 2s infinite; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@media (max-width: 768px) {
+    .hero-bg { background-attachment: scroll; }
+}
