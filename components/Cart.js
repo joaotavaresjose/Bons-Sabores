@@ -20,7 +20,7 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart, u
             ).join('\n');
 
             const message = `Olá! Gostaria de fazer o seguinte pedido:\n\n${orderDetails}\n\nTotal: R$ ${total.toFixed(2)}`;
-            const whatsappUrl = `https://wa.me/244999999999?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/244951184916?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         };
 
