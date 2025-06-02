@@ -16,10 +16,10 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart, u
             }
 
             const orderDetails = cartItems.map(item => 
-                `${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`
+                `${item.quantity}x ${item.name} - Kz ${(item.price * item.quantity).toFixed(2)}`
             ).join('\n');
 
-            const message = `Olá! Gostaria de fazer o seguinte pedido:\n\n${orderDetails}\n\nTotal: R$ ${total.toFixed(2)}`;
+            const message = `Olá! Gostaria de fazer o seguinte pedido:\n\n${orderDetails}\n\nTotal: Kz ${total.toFixed(2)}`;
             const whatsappUrl = `https://wa.me/244951184916?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         };
@@ -55,7 +55,7 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart, u
                                         <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
                                         <div className="flex-1">
                                             <h3 className="font-semibold text-gray-800">{item.name}</h3>
-                                            <p className="text-orange-500 font-bold">R$ {item.price.toFixed(2)}</p>
+                                            <p className="text-orange-500 font-bold">Kz {item.price.toFixed(2)}</p>
                                         </div>
                                         <div className="flex items-center space-x-2">
                                             <button 
@@ -88,7 +88,7 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart, u
                         <div className="border-t p-6">
                             <div className="flex justify-between items-center mb-4">
                                 <span className="text-xl font-bold text-gray-800">Total:</span>
-                                <span className="text-2xl font-bold text-orange-500">R$ {total.toFixed(2)}</span>
+                                <span className="text-2xl font-bold text-orange-500">Kz {total.toFixed(2)}</span>
                             </div>
                             <button 
                                 onClick={handleCheckout}

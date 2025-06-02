@@ -11,7 +11,7 @@ function Menu({ addToCart, setCurrentPage }) {
                 id: 1,
                 name: "Classic Burger",
                 description: "Hambúrguer clássico com carne, queijo, alface, tomate e molho especial",
-                price: 25.90,
+                price: 2590,
                 image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&w=400&q=80",
                 ingredients: ["Pão brioche", "Carne 150g", "Queijo cheddar", "Alface", "Tomate", "Molho especial"],
                 calories: 580
@@ -20,7 +20,7 @@ function Menu({ addToCart, setCurrentPage }) {
                 id: 2,
                 name: "Bacon Supreme",
                 description: "Hambúrguer com bacon crocante, queijo cheddar e cebola caramelizada",
-                price: 32.90,
+                price: 3290,
                 image: "https://images.unsplash.com/photo-1553979459-d2229ba7433a?ixlib=rb-4.0.3&w=400&q=80",
                 ingredients: ["Pão brioche", "Carne 150g", "Bacon", "Queijo cheddar", "Cebola caramelizada"],
                 calories: 720
@@ -29,7 +29,7 @@ function Menu({ addToCart, setCurrentPage }) {
                 id: 3,
                 name: "Veggie Delight",
                 description: "Hambúrguer vegetariano com blend de legumes, queijo e molho verde",
-                price: 28.90,
+                price: 2890,
                 image: "https://images.unsplash.com/photo-1525059696034-4967a729002e?ixlib=rb-4.0.3&w=400&q=80",
                 ingredients: ["Pão integral", "Blend de legumes", "Queijo vegano", "Rúcula", "Molho verde"],
                 calories: 420
@@ -38,7 +38,7 @@ function Menu({ addToCart, setCurrentPage }) {
                 id: 4,
                 name: "BBQ Monster",
                 description: "Hambúrguer duplo com molho barbecue, bacon e onion rings",
-                price: 38.90,
+                price: 3890,
                 image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&w=400&q=80",
                 ingredients: ["Pão brioche", "2x Carne 150g", "Bacon", "Onion rings", "Molho BBQ"],
                 calories: 890
@@ -47,7 +47,7 @@ function Menu({ addToCart, setCurrentPage }) {
                 id: 5,
                 name: "Chicken Crispy",
                 description: "Hambúrguer de frango empanado com maionese temperada e pickle",
-                price: 29.90,
+                price: 2990,
                 image: "https://images.unsplash.com/photo-1606755962773-d324e9a13086?ixlib=rb-4.0.3&w=400&q=80",
                 ingredients: ["Pão brioche", "Frango empanado", "Maionese temperada", "Pickle", "Alface"],
                 calories: 640
@@ -56,7 +56,7 @@ function Menu({ addToCart, setCurrentPage }) {
                 id: 6,
                 name: "Fish Burger",
                 description: "Hambúrguer de peixe grelhado com molho tártaro e rúcula",
-                price: 31.90,
+                price: 3190,
                 image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&w=400&q=80",
                 ingredients: ["Pão integral", "Peixe grelhado", "Molho tártaro", "Rúcula", "Tomate"],
                 calories: 520
@@ -155,7 +155,7 @@ function Menu({ addToCart, setCurrentPage }) {
                                                 className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
                                             />
                                             <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full font-semibold bounce-in">
-                                                R$ {burger.price.toFixed(2)}
+                                                Kz {burger.price.toFixed(2)}
                                             </div>
                                         </div>
                                         <div className="p-6">

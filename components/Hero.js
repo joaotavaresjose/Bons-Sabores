@@ -19,7 +19,7 @@ function Hero({ setCurrentPage }) {
                                 Ver Cardápio Completo
                             </button>
                             <a 
-                                href="tel:+244999999999" 
+                                href="tel:+244951184916" 
                                 className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-800 transition inline-block"
                             >
                                 <i className="fas fa-phone mr-2"></i>
