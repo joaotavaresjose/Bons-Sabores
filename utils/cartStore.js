@@ -1,5 +1,5 @@
 const CartStore = {
-    items: [],
+    items: JSON.parse(localStorage.getItem('cartItems')) || [],
     listeners: [],
 
     addItem(item) {
@@ -9,6 +9,7 @@ const CartStore = {
         } else {
             this.items.push({ ...item, quantity: 1 });
         }
+        this.saveToStorage();
         this.notifyListeners();
     },
 
@@ -20,17 +21,23 @@ const CartStore = {
         const item = this.items.find(i => i.id === id);
         if (item) {
             item.quantity = quantity;
+            this.saveToStorage();
             this.notifyListeners();
         }
     },
 
     removeItem(id) {
         this.items = this.items.filter(i => i.id !== id);
+        this.saveToStorage();
         this.notifyListeners();
     },
 
     getItems() {
         return this.items;
+    },
+
+    saveToStorage() {
+        localStorage.setItem('cartItems', JSON.stringify(this.items));
     },
 
     subscribe(listener) {
@@ -41,6 +48,6 @@ const CartStore = {
     },
 
     notifyListeners() {
-        this.listeners.forEach(listener => listener(this.items));
+        this.listeners.forEach(listener => listener([...this.items]));
     }
 };

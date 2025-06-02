@@ -10,7 +10,7 @@ function Footer() {
                                 <h3 className="text-2xl font-bold">Bons Sabores</h3>
                             </div>
                             <p className="text-gray-300 mb-4">
-                                Os melhores hambúrgueres artesanais da cidade, 
+                                Os melhores hambúrgueres artesanais de Angola, 
                                 feitos com ingredientes frescos e muito carinho.
                             </p>
                             <div className="flex space-x-4">
@@ -20,26 +20,26 @@ function Footer() {
                                 <a href="#" className="text-gray-300 hover:text-orange-500 transition">
                                     <i className="fab fa-instagram text-xl"></i>
                                 </a>
-                                <a href="https://wa.me/951184916" className="text-gray-300 hover:text-orange-500 transition">
+                                <a href="#" className="text-gray-300 hover:text-orange-500 transition">
                                     <i className="fab fa-whatsapp text-xl"></i>
                                 </a>
                             </div>
                         </div>
 
                         <div>
-                            <h4 className="text-xl font-semibold mb-4">Contato</h4>
+                            <h4 className="text-xl font-semibold mb-4">Contacto</h4>
                             <div className="space-y-3">
                                 <div className="flex items-center space-x-3">
                                     <i className="fas fa-map-marker-alt text-orange-500"></i>
-                                    <span>Rua dos Hambúrgueres, 000 - Caop B, CpB</span>
+                                    <span>Rua Kwame Nkrumah, 123 - Luanda, Angola</span>
                                 </div>
                                 <div className="flex items-center space-x-3">
                                     <i className="fas fa-phone text-orange-500"></i>
-                                    <span>(+224 951114916) </span>
+                                    <span>+244 999 999 999</span>
                                 </div>
                                 <div className="flex items-center space-x-3">
                                     <i className="fas fa-envelope text-orange-500"></i>
-                                    <span>contato@bonssabores.com</span>
+                                    <span>contacto@bonssabores.ao</span>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ function Footer() {
 
                     <div className="border-t border-gray-700 mt-8 pt-8 text-center">
                         <p className="text-gray-300">
-                            © 2025 Bons Sabores. Todos os direitos reservados.
+                            © 2024 Bons Sabores. Todos os direitos reservados.
                         </p>
                     </div>
                 </div>

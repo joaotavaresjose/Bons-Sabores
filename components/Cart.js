@@ -1,4 +1,4 @@
-function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart }) {
+function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart, user, setCurrentPage }) {
     try {
         const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
@@ -8,13 +8,28 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart })
                 return;
             }
 
+            if (!user) {
+                alert('Você precisa estar logado para finalizar a compra!');
+                setCurrentPage('login');
+                toggleCart();
+                return;
+            }
+
             const orderDetails = cartItems.map(item => 
-                `${item.quantity}x ${item.name} - Kz ${(item.price * item.quantity).toFixed(2)}`
+                `${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`
             ).join('\n');
 
-            const message = `Olá! Gostaria de fazer o seguinte pedido:\n\n${orderDetails}\n\nTotal: Kz ${total.toFixed(2)}`;
-            const whatsappUrl = `https://wa.me/951184916 ?text=${encodeURIComponent(message)}`;
+            const message = `Olá! Gostaria de fazer o seguinte pedido:\n\n${orderDetails}\n\nTotal: R$ ${total.toFixed(2)}`;
+            const whatsappUrl = `https://wa.me/244999999999?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
+        };
+
+        const handleUpdateQuantity = (id, newQuantity) => {
+            updateQuantity(id, newQuantity);
+        };
+
+        const handleRemoveItem = (id) => {
+            removeFromCart(id);
         };
 
         return (
@@ -40,24 +55,24 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart })
                                         <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
                                         <div className="flex-1">
                                             <h3 className="font-semibold text-gray-800">{item.name}</h3>
-                                            <p className="text-orange-500 font-bold">Kz {item.price.toFixed(2)}</p>
+                                            <p className="text-orange-500 font-bold">R$ {item.price.toFixed(2)}</p>
                                         </div>
                                         <div className="flex items-center space-x-2">
                                             <button 
-                                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
                                                 className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300"
                                             >
                                                 <i className="fas fa-minus text-sm"></i>
                                             </button>
                                             <span className="w-8 text-center font-semibold">{item.quantity}</span>
                                             <button 
-                                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
                                                 className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300"
                                             >
                                                 <i className="fas fa-plus text-sm"></i>
                                             </button>
                                             <button 
-                                                onClick={() => removeFromCart(item.id)}
+                                                onClick={() => handleRemoveItem(item.id)}
                                                 className="w-8 h-8 bg-red-100 text-red-500 rounded-full flex items-center justify-center hover:bg-red-200 ml-2"
                                             >
                                                 <i className="fas fa-trash text-sm"></i>
@@ -73,7 +88,7 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart })
                         <div className="border-t p-6">
                             <div className="flex justify-between items-center mb-4">
                                 <span className="text-xl font-bold text-gray-800">Total:</span>
-                                <span className="text-2xl font-bold text-orange-500">Kz {total.toFixed(2)}</span>
+                                <span className="text-2xl font-bold text-orange-500">R$ {total.toFixed(2)}</span>
                             </div>
                             <button 
                                 onClick={handleCheckout}

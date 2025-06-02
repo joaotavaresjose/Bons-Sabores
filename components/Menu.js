@@ -1,7 +1,10 @@
-function Menu({ addToCart }) {
+function Menu({ addToCart, setCurrentPage }) {
     try {
         const [currentSlide, setCurrentSlide] = React.useState(0);
         const [itemsPerSlide, setItemsPerSlide] = React.useState(3);
+        const [selectedProduct, setSelectedProduct] = React.useState(null);
+        const [touchStart, setTouchStart] = React.useState(null);
+        const [touchEnd, setTouchEnd] = React.useState(null);
         
         const burgers = [
             {
@@ -9,42 +12,54 @@ function Menu({ addToCart }) {
                 name: "Classic Burger",
                 description: "Hambúrguer clássico com carne, queijo, alface, tomate e molho especial",
                 price: 25.90,
-                image: "../img/pr1.jpeg"
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&w=400&q=80",
+                ingredients: ["Pão brioche", "Carne 150g", "Queijo cheddar", "Alface", "Tomate", "Molho especial"],
+                calories: 580
             },
             {
                 id: 2,
                 name: "Bacon Supreme",
                 description: "Hambúrguer com bacon crocante, queijo cheddar e cebola caramelizada",
                 price: 32.90,
-                image: "../img/pr2.jpeg"
+                image: "https://images.unsplash.com/photo-1553979459-d2229ba7433a?ixlib=rb-4.0.3&w=400&q=80",
+                ingredients: ["Pão brioche", "Carne 150g", "Bacon", "Queijo cheddar", "Cebola caramelizada"],
+                calories: 720
             },
             {
                 id: 3,
                 name: "Veggie Delight",
                 description: "Hambúrguer vegetariano com blend de legumes, queijo e molho verde",
                 price: 28.90,
-                 image: "../img/pr2.jpeg"
+                image: "https://images.unsplash.com/photo-1525059696034-4967a729002e?ixlib=rb-4.0.3&w=400&q=80",
+                ingredients: ["Pão integral", "Blend de legumes", "Queijo vegano", "Rúcula", "Molho verde"],
+                calories: 420
             },
             {
                 id: 4,
                 name: "BBQ Monster",
                 description: "Hambúrguer duplo com molho barbecue, bacon e onion rings",
                 price: 38.90,
-                image: "../img/pr2.jpeg"
+                image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&w=400&q=80",
+                ingredients: ["Pão brioche", "2x Carne 150g", "Bacon", "Onion rings", "Molho BBQ"],
+                calories: 890
             },
             {
                 id: 5,
                 name: "Chicken Crispy",
                 description: "Hambúrguer de frango empanado com maionese temperada e pickle",
                 price: 29.90,
-                image:"../img/pr3.jpeg"
+                image: "https://images.unsplash.com/photo-1606755962773-d324e9a13086?ixlib=rb-4.0.3&w=400&q=80",
+                ingredients: ["Pão brioche", "Frango empanado", "Maionese temperada", "Pickle", "Alface"],
+                calories: 640
             },
             {
                 id: 6,
                 name: "Fish Burger",
                 description: "Hambúrguer de peixe grelhado com molho tártaro e rúcula",
                 price: 31.90,
-                 image: "../img/pr2.jpeg"
+                image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&w=400&q=80",
+                ingredients: ["Pão integral", "Peixe grelhado", "Molho tártaro", "Rúcula", "Tomate"],
+                calories: 520
             }
         ];
 
@@ -65,6 +80,7 @@ function Menu({ addToCart }) {
         }, []);
 
         const totalSlides = Math.ceil(burgers.length / itemsPerSlide);
+        const minSwipeDistance = 50;
 
         const nextSlide = () => {
             setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -74,9 +90,37 @@ function Menu({ addToCart }) {
             setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
         };
 
+        const onTouchStart = (e) => {
+            setTouchEnd(null);
+            setTouchStart(e.targetTouches[0].clientX);
+        };
+
+        const onTouchMove = (e) => {
+            setTouchEnd(e.targetTouches[0].clientX);
+        };
+
+        const onTouchEnd = () => {
+            if (!touchStart || !touchEnd) return;
+            const distance = touchStart - touchEnd;
+            const isLeftSwipe = distance > minSwipeDistance;
+            const isRightSwipe = distance < -minSwipeDistance;
+
+            if (isLeftSwipe) nextSlide();
+            if (isRightSwipe) prevSlide();
+        };
+
         const getCurrentItems = () => {
             const start = currentSlide * itemsPerSlide;
             return burgers.slice(start, start + itemsPerSlide);
+        };
+
+        const handleCardClick = (burger, e) => {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+            setSelectedProduct(burger);
+        };
+
+        const closeModal = () => {
+            setSelectedProduct(null);
         };
 
         return (
@@ -90,10 +134,20 @@ function Menu({ addToCart }) {
                     </div>
 
                     <div className="relative">
-                        <div className="overflow-hidden">
+                        <div 
+                            className="overflow-hidden"
+                            onTouchStart={onTouchStart}
+                            onTouchMove={onTouchMove}
+                            onTouchEnd={onTouchEnd}
+                        >
                             <div className={`grid gap-8 ${itemsPerSlide === 1 ? 'grid-cols-1' : itemsPerSlide === 2 ? 'grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
                                 {getCurrentItems().map((burger, index) => (
-                                    <div key={burger.id} className={`burger-card bg-white rounded-2xl shadow-lg overflow-hidden slide-in-up`} style={{animationDelay: `${index * 0.2}s`}}>
+                                    <div 
+                                        key={burger.id} 
+                                        onClick={(e) => handleCardClick(burger, e)}
+                                        className={`burger-card bg-white rounded-2xl shadow-lg overflow-hidden slide-in-up cursor-pointer`} 
+                                        style={{animationDelay: `${index * 0.2}s`}}
+                                    >
                                         <div className="relative overflow-hidden">
                                             <img 
                                                 src={burger.image} 
@@ -101,14 +155,17 @@ function Menu({ addToCart }) {
                                                 className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
                                             />
                                             <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full font-semibold bounce-in">
-                                                Kz {burger.price.toFixed(2)}
+                                                R$ {burger.price.toFixed(2)}
                                             </div>
                                         </div>
                                         <div className="p-6">
                                             <h3 className="text-xl font-bold text-gray-800 mb-2">{burger.name}</h3>
                                             <p className="text-gray-600 mb-4">{burger.description}</p>
                                             <button 
-                                                onClick={() => addToCart(burger)}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    addToCart(burger);
+                                                }}
                                                 className="w-full btn-primary text-white py-3 rounded-full font-semibold hover:scale-105 transition-transform"
                                             >
                                                 <i className="fas fa-plus mr-2"></i>
@@ -154,11 +211,22 @@ function Menu({ addToCart }) {
                     )}
 
                     <div className="text-center mt-8 fade-in-up">
-                        <button className="btn-primary text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-transform">
+                        <button 
+                            onClick={() => setCurrentPage('menu')}
+                            className="btn-primary text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-transform"
+                        >
                             Ver Cardápio Completo
                         </button>
                     </div>
                 </div>
+
+                {selectedProduct && (
+                    <ProductModal 
+                        product={selectedProduct} 
+                        onClose={closeModal} 
+                        onAddToCart={addToCart}
+                    />
+                )}
             </section>
         );
     } catch (error) {

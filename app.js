@@ -48,7 +48,7 @@ function App() {
             };
 
             window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Trigger on load
+            handleScroll();
             return () => window.removeEventListener('scroll', handleScroll);
         }, []);
 
@@ -71,7 +71,7 @@ function App() {
                         <div>
                             <Hero setCurrentPage={setCurrentPage} />
                             <About />
-                            <Menu addToCart={addToCart} />
+                            <Menu addToCart={addToCart} setCurrentPage={setCurrentPage} />
                             <Contact />
                         </div>
                     );
@@ -98,6 +98,8 @@ function App() {
                     cartItems={cartItems}
                     updateQuantity={updateQuantity}
                     removeFromCart={removeFromCart}
+                    user={user}
+                    setCurrentPage={setCurrentPage}
                 />
                 {isCartOpen && (
                     <div 
