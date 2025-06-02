@@ -56,16 +56,16 @@ function App() {
             switch(currentPage) {
                 case 'menu':
                     return <MenuPage addToCart={addToCart} />;
+                case 'about':
+                    return <AboutPage />;
+                case 'contact':
+                    return <ContactPage />;
                 case 'login':
                     return <LoginPage setCurrentPage={setCurrentPage} setUser={setUser} />;
                 case 'register':
                     return <RegisterPage setCurrentPage={setCurrentPage} setUser={setUser} />;
                 case 'profile':
                     return <ProfilePage user={user} setUser={setUser} setCurrentPage={setCurrentPage} />;
-                case 'about':
-                    return <div className="py-20 text-center fade-in"><h1 className="text-4xl">Página Sobre em Construção</h1></div>;
-                case 'contact':
-                    return <div className="py-20 text-center fade-in"><h1 className="text-4xl">Página Contato em Construção</h1></div>;
                 default:
                     return (
                         <div>
