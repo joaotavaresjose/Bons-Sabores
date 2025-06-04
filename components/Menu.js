@@ -74,9 +74,9 @@ function Menu({ addToCart, setCurrentPage }) {
           },
           {
             id: 5,
-            name: "Fish Burger",
+            name: "Chicken Crispy",
             description:
-              "Hambúrguer de peixe grelhado com molho tártaro e rúcula",
+              "Hambúrguer de frango empanado com maionese temperada e pickle",
             price: 3190,
             image: "/img/produtos/Chicken-crispy.png",
             ingredients: [
@@ -94,8 +94,7 @@ function Menu({ addToCart, setCurrentPage }) {
             description:
               "Hambúrguer de peixe grelhado com molho tártaro e rúcula",
             price: 3190,
-            image:
-              "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&w=400&q=80",
+            image: "/img/produtos/Fish-burger.jpeg",
             ingredients: [
               "Pão integral",
               "Peixe grelhado",
@@ -199,7 +198,7 @@ function Menu({ addToCart, setCurrentPage }) {
                                                 className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
                                             />
                                             <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full font-semibold bounce-in">
-                                                Kz {burger.price.toFixed(2)}
+                                                Kz {burger.price.toFixed()}
                                             </div>
                                         </div>
                                         <div className="p-6">

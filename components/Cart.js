@@ -55,7 +55,7 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart, u
                                         <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
                                         <div className="flex-1">
                                             <h3 className="font-semibold text-gray-800">{item.name}</h3>
-                                            <p className="text-orange-500 font-bold">Kz {item.price.toFixed(2)}</p>
+                                            <p className="text-orange-500 font-bold">Kz {item.price.toFixed()}</p>
                                         </div>
                                         <div className="flex items-center space-x-2">
                                             <button 
@@ -88,7 +88,7 @@ function Cart({ isOpen, toggleCart, cartItems, updateQuantity, removeFromCart, u
                         <div className="border-t p-6">
                             <div className="flex justify-between items-center mb-4">
                                 <span className="text-xl font-bold text-gray-800">Total:</span>
-                                <span className="text-2xl font-bold text-orange-500">Kz {total.toFixed(2)}</span>
+                                <span className="text-2xl font-bold text-orange-500">Kz {total.toFixed()}</span>
                             </div>
                             <button 
                                 onClick={handleCheckout}
