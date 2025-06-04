@@ -74,19 +74,19 @@ function Menu({ addToCart, setCurrentPage }) {
           },
           {
             id: 5,
-            name: "Chicken Crispy",
+            name: "Fish Burger",
             description:
-              "Hambúrguer de frango empanado com maionese temperada e pickle",
-            price: 2990,
+              "Hambúrguer de peixe grelhado com molho tártaro e rúcula",
+            price: 3190,
             image: "/img/produtos/Chicken-crispy.png",
             ingredients: [
-              "Pão brioche",
-              "Frango empanado",
-              "Maionese temperada",
-              "Pickle",
-              "Alface",
+              "Pão integral",
+              "Peixe grelhado",
+              "Molho tártaro",
+              "Rúcula",
+              "Tomate",
             ],
-            calories: 640,
+            calories: 520,
           },
           {
             id: 6,
