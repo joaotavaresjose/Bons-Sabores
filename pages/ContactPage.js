@@ -7,13 +7,6 @@ function ContactPage() {
             subject: '',
             message: ''
         });
-        const [isLoading, setIsLoading] = React.useState(false);
-
-        React.useEffect(() => {
-            if (window.emailjs) {
-                window.emailjs.init('XHpUnYz80FZeg8WuV');
-            }
-        }, []);
 
         const handleInputChange = (e) => {
             setFormData({
@@ -22,39 +15,21 @@ function ContactPage() {
             });
         };
 
-        const handleSubmit = async (e) => {
+        const handleSubmit = (e) => {
             e.preventDefault();
-            setIsLoading(true);
-
-            try {
-                if (!window.emailjs) {
-                    throw new Error('EmailJS não carregado');
-                }
-
-                const templateParams = {
-                    from_name: formData.name,
-                    from_email: formData.email,
-                    phone: formData.phone,
-                    subject: formData.subject,
-                    message: formData.message,
-                    to_name: 'Bons Sabores',
-                    reply_to: formData.email
-                };
-
-                await window.emailjs.send(
-                    'service_1esses4b',
-                    'template_ccumkh4',
-                    templateParams
-                );
-
-                alert('Mensagem enviada com sucesso! Entraremos em contacto em breve.');
-                setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-            } catch (error) {
-                console.error('Erro ao enviar email:', error);
-                alert('Erro ao enviar mensagem. Tente novamente ou entre em contacto pelo telefone.');
-            } finally {
-                setIsLoading(false);
+            
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
             }
+
+            const message = `*Mensagem de Contacto - Bons Sabores*\n\n*Nome:* ${formData.name}\n*Email:* ${formData.email}${formData.phone ? `\n*Telefone:* ${formData.phone}` : ''}\n*Assunto:* ${formData.subject}\n\n*Mensagem:*\n${formData.message}`;
+            
+            const whatsappUrl = `https://wa.me/244951184916?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            alert('Redirecionando para WhatsApp...');
+            setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         };
 
         return (
@@ -84,7 +59,7 @@ function ContactPage() {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold text-gray-800 mb-2">Telefone</h4>
-                                        <p className="text-gray-600">+244 999 999 999</p>
+                                        <p className="text-gray-600">+244 951 184 916</p>
                                         <p className="text-sm text-gray-500">Disponível 24/7 para pedidos</p>
                                     </div>
                                 </div>
@@ -131,8 +106,7 @@ function ContactPage() {
                                             onChange={handleInputChange}
                                             placeholder="Seu nome *"
                                             required
-                                            disabled={isLoading}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         />
                                     </div>
                                     <div>
@@ -143,8 +117,7 @@ function ContactPage() {
                                             onChange={handleInputChange}
                                             placeholder="Seu email *"
                                             required
-                                            disabled={isLoading}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         />
                                     </div>
                                 </div>
@@ -156,8 +129,7 @@ function ContactPage() {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder="Telefone"
-                                            disabled={isLoading}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         />
                                     </div>
                                     <div>
@@ -168,8 +140,7 @@ function ContactPage() {
                                             onChange={handleInputChange}
                                             placeholder="Assunto *"
                                             required
-                                            disabled={isLoading}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         />
                                     </div>
                                 </div>
@@ -181,26 +152,15 @@ function ContactPage() {
                                         placeholder="Sua mensagem *"
                                         rows="6"
                                         required
-                                        disabled={isLoading}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                     ></textarea>
                                 </div>
                                 <button
                                     type="submit"
-                                    disabled={isLoading}
-                                    className="w-full btn-primary text-white py-4 rounded-lg font-semibold disabled:opacity-50 hover:scale-105 transition-transform"
+                                    className="w-full btn-primary text-white py-4 rounded-lg font-semibold hover:scale-105 transition-transform"
                                 >
-                                    {isLoading ? (
-                                        <div className="flex items-center justify-center">
-                                            <i className="fas fa-spinner fa-spin mr-2"></i>
-                                            Enviando...
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            <i className="fas fa-paper-plane mr-2"></i>
-                                            Enviar Mensagem
-                                        </div>
-                                    )}
+                                    <i className="fab fa-whatsapp mr-2"></i>
+                                    Enviar via WhatsApp
                                 </button>
                             </form>
                         </div>
