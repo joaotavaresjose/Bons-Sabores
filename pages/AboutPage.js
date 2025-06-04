@@ -29,7 +29,7 @@ function AboutPage() {
                         
                         <div className="fade-in-right">
                             <img 
-                                src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&w=600&q=80" 
+                                src="/img/about.jpeg" 
                                 alt="Nossa cozinha"
                                 className="rounded-2xl shadow-lg w-full hover:scale-105 transition-transform duration-500"
                             />
