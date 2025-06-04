@@ -50,7 +50,7 @@ function Contact() {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold text-gray-800">Endereço</h4>
-                                        <p className="text-gray-600">Rua Kwame Nkrumah, 123 - Luanda, Angola</p>
+                                        <p className="text-gray-600">Rua Vila de Viana, 123 - Luanda, Angola</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center space-x-4">
