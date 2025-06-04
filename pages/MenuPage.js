@@ -15,12 +15,12 @@ function MenuPage({ addToCart }) {
         const menuItems = {
             burgers: [
                 { id: 1, name: "Classic Burger", description: "Hambúrguer clássico com carne, queijo, alface, tomate e molho especial", price: 2590, image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&w=400&q=80" },
-                { id: 2, name: "Bacon Supreme", description: "Hambúrguer com bacon crocante, queijo cheddar e cebola caramelizada", price: 3290, image: "https://images.unsplash.com/photo-1553979459-d2229ba7433a?ixlib=rb-4.0.3&w=400&q=80" },
-                { id: 3, name: "Veggie Delight", description: "Hambúrguer vegetariano com blend de legumes, queijo e molho verde", price: 2890, image: "https://images.unsplash.com/photo-1525059696034-4967a729002e?ixlib=rb-4.0.3&w=400&q=80" },
-                { id: 4, name: "BBQ Monster", description: "Hambúrguer duplo com molho barbecue, bacon e onion rings", price: 3890, image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&w=400&q=80" },
-                { id: 5, name: "Chicken Crispy", description: "Hambúrguer de frango empanado com maionese temperada e pickle", price: 2990, image: "https://images.unsplash.com/photo-1606755962773-d324e9a13086?ixlib=rb-4.0.3&w=400&q=80" },
-                { id: 6, name: "Fish Burger", description: "Hambúrguer de peixe grelhado com molho tártaro e rúcula", price: 3190, image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&w=400&q=80" },
-                { id: 16, name: "Double Cheese", description: "Hambúrguer duplo com queijo derretido", price: 3590, image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&w=400&q=80" },
+                { id: 2, name: "Bacon Supreme", description: "Hambúrguer com bacon crocante, queijo cheddar e cebola caramelizada", price: 3290, image: "/img/produtos/BBQ-monster.jpeg" },
+                { id: 3, name: "Veggie Delight", description: "Hambúrguer vegetariano com blend de legumes, queijo e molho verde", price: 2890, image: "/img/produtos/BBQ-monster.jpeg" },
+                { id: 4, name: "BBQ Monster", description: "Hambúrguer duplo com molho barbecue, bacon e onion rings", price: 3890, image: "/img/produtos/BBQ-monster.jpeg" },
+                { id: 5, name: "Chicken Crispy", description: "Hambúrguer de frango empanado com maionese temperada e pickle", price: 2990, image: "/img/produtos/BBQ-monster.jpeg" },
+                { id: 6, name: "Fish Burger", description: "Hambúrguer de peixe grelhado com molho tártaro e rúcula", price: 3190, image: "/img/produtos/Fish-burger.jpeg" },
+                { id: 16, name: "Double Cheese", description: "Hambúrguer duplo com queijo derretido", price: 3590, image: "/img/produtos/BBQ-monster.jpeg" },
                 { id: 17, name: "Spicy Jalapeño", description: "Hambúrguer com jalapeños e molho picante", price: 3090, image: "https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&w=400&q=80" },
                 { id: 18, name: "Mushroom Swiss", description: "Hambúrguer com cogumelos e queijo suíço", price: 3390, image: "https://images.unsplash.com/photo-1520072959219-c595dc870360?ixlib=rb-4.0.3&w=400&q=80" }
             ],

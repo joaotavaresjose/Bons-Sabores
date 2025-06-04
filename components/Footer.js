@@ -31,11 +31,11 @@ function Footer() {
                             <div className="space-y-3">
                                 <div className="flex items-center space-x-3">
                                     <i className="fas fa-map-marker-alt text-orange-500"></i>
-                                    <span>Rua Kwame Nkrumah, 123 - Luanda, Angola</span>
+                                    <span>Rua Vila de Viana, 123 - Luanda, Angola</span>
                                 </div>
                                 <div className="flex items-center space-x-3">
                                     <i className="fas fa-phone text-orange-500"></i>
-                                    <span>+244 999 999 999</span>
+                                    <span>+244 951 184 916</span>
                                 </div>
                                 <div className="flex items-center space-x-3">
                                     <i className="fas fa-envelope text-orange-500"></i>
@@ -65,7 +65,7 @@ function Footer() {
 
                     <div className="border-t border-gray-700 mt-8 pt-8 text-center">
                         <p className="text-gray-300">
-                            © 2024 Bons Sabores. Todos os direitos reservados.
+                            © 2025 Bons Sabores. Todos os direitos reservados.
                         </p>
                     </div>
                 </div>
