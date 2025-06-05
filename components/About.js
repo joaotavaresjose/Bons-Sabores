@@ -43,7 +43,7 @@ function About() {
 
                 <div className="fade-in-right">
                   <img
-                    src="img/about.jpeg"
+                    src="/img/about.jpeg"
                     alt="Nossa cozinha"
                     className="rounded-2xl shadow-lg w-full hover:scale-105 transition-transform duration-500"
                   />
