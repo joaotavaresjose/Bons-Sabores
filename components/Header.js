@@ -27,7 +27,11 @@ function Header({ cartItems, toggleCart, currentPage, setCurrentPage, user, setU
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between items-center py-4">
                         <div className="flex items-center space-x-2 cursor-pointer" onClick={() => handleNavClick('home')}>
-                            <i className="fas fa-hamburger text-orange-500 text-2xl bounce"></i>
+                            <img 
+                                src="img/logo.jpg" 
+                                alt="Bons Sabores Logo" 
+                                className="w-10 h-10 rounded-full shadow-md transition-transform hover:scale-110"
+                            />
                             <h1 className="text-2xl font-bold text-gray-800">Bons Sabores</h1>
                         </div>
 
